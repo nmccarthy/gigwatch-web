@@ -43,20 +43,12 @@ export default class Signup extends Component {
     this.setState({ isLoading: true });
   
     try {
-    //   const newUser = await Auth.signUp({
-    //     username: this.state.username,
-    //     password: this.state.password,
-    //     attributes: { email: this.state.email }
-    //   });
-    await Auth.signUp({ username: this.state.username, password: this.state.password, attributes: { email: this.state.email }});
-    await Auth.signIn(this.state.username, this.state.password);
-      this.props.userHasAuthenticated(true);
-      this.props.history.push("/");
-    //   this.setState({
-    //     newUser
-    //   });
+        await Auth.signUp({ username: this.state.username, password: this.state.password, attributes: { email: this.state.email }});
+        await Auth.signIn(this.state.username, this.state.password);
+        this.props.userHasAuthenticated(true);
+        this.props.history.push("/");
     } catch (e) {
-      alert(e.message);
+        alert(e.message);
     }
   
     this.setState({ isLoading: false });
